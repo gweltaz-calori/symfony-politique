@@ -9,11 +9,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity()
  */
-class Law
+class Law implements \JsonSerializable
 {
     /**
      * @ORM\Id
@@ -24,12 +25,13 @@ class Law
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotNull()
      */
     private $description;
 
     /**
      * Many features have one product. This is the owning side.
-     * @ORM\ManyToOne(targetEntity="President", inversedBy="laws")
+     * @ORM\ManyToOne(targetEntity="President", inversedBy="laws",cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="president_uuid", referencedColumnName="uuid")
      */
     private $createdBy;
@@ -85,4 +87,18 @@ class Law
     }
 
 
+    /**
+     * Specify data which should be serialized to JSON
+     * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
+     * @return mixed data which can be serialized by <b>json_encode</b>,
+     * which is a value of any type other than a resource.
+     * @since 5.4.0
+     */
+    public function jsonSerialize()
+    {
+       return [
+         "uuid" => $this->uuid,
+         "description" => $this->description,
+       ];
+    }
 }
