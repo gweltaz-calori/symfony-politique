@@ -22,6 +22,7 @@ php bin/composer.phar install
 ### VueJS
 Nécessite [NodeJS](https://nodejs.org/en/).
 ```bash
+cd client
 npm i
 ```
 
@@ -45,7 +46,6 @@ php bin/console doctrine:migrations:migrate
 ```
 
 ## Exécution des fixtures
-
 
 ```bash
 php bin/console doctrine:fixtures:load
