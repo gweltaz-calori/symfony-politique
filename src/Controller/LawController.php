@@ -14,9 +14,11 @@ use App\Entity\LawVote;
 use App\Entity\President;
 use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\FOSRestController;
+use Nelmio\ApiDocBundle\Annotation\Model;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Swagger\Annotations as SWG;
 
 class LawController extends FOSRestController
 {
@@ -29,6 +31,14 @@ class LawController extends FOSRestController
         $this->validator = $validator;
     }
 
+    /**
+     * @SWG\Tag(name="Law")
+     * @SWG\Response(
+     *     response=200,
+     *     description="Retrieve a law using his uuid",
+     *     @Model(type=Law::class)
+     * )
+     */
     public function getLawAction(Law $law)
     {
         if($law === null) {
@@ -37,11 +47,27 @@ class LawController extends FOSRestController
         return $this->json($law);
     }
 
+    /**
+     * @SWG\Tag(name="Law")
+     * @SWG\Response(
+     *     response=200,
+     *     description="Retrieve all laws",
+     *     @Model(type=Law::class)
+     * )
+     */
     public function getLawsAction()
     {
         return $this->json($this->em->getRepository(Law::class)->findAll());
     }
 
+    /**
+     * @SWG\Tag(name="Law")
+     * @SWG\Response(
+     *     response=200,
+     *     description="Retrieve all votes for this law",
+     *     @Model(type=Law::class)
+     * )
+     */
     public function getLawsVotesAction(Law $law) {
         if($law === null) {
             return new Response("Not Found",Response::HTTP_NOT_FOUND);
@@ -53,6 +79,12 @@ class LawController extends FOSRestController
      * @ParamConverter("vote", converter="fos_rest.request_body")
      * @param LawVote $vote
      * @return Response
+     * @SWG\Tag(name="Law")
+     * @SWG\Response(
+     *     response=200,
+     *     description="Create a new vote for this law",
+     *     @Model(type=Law::class)
+     * )
      */
     public function postLawsVotesAction(Law $law,LawVote $vote) {
         $votes = $law->getVotes();

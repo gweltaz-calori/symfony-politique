@@ -14,9 +14,12 @@ use App\Entity\President;
 use App\Services\OpenStreetMapClient;
 use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\FOSRestController;
+use Nelmio\ApiDocBundle\Annotation\Model;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Swagger\Annotations as SWG;
+
 
 class PresidentController extends FOSRestController
 {
@@ -31,6 +34,14 @@ class PresidentController extends FOSRestController
         $this->osmClient = $openStreetMapClient;
     }
 
+    /**
+     * @SWG\Tag(name="President")
+     * @SWG\Response(
+     *     response=200,
+     *     description="Retrieve a president using his uuid",
+     *     @Model(type=President::class)
+     * )
+     */
     public function getPresidentAction(President $president)
     {
         if($president === null) {
@@ -39,18 +50,50 @@ class PresidentController extends FOSRestController
         return $this->json($president);
     }
 
+    /**
+     * @SWG\Tag(name="President")
+     * @SWG\Response(
+     *     response=200,
+     *     description="Retrieve a president geocoordinates",
+     *     @Model(type=President::class)
+     * )
+     */
     public function getPresidentCoordinatesAction(President $president) {
         return $this->json($this->osmClient->getCooordinates($president->getCountry()));
     }
 
+    /**
+     * @SWG\Tag(name="President")
+     * @SWG\Response(
+     *     response=200,
+     *     description="Retrieve a president laws",
+     *     @Model(type=President::class)
+     * )
+     */
     public function getPresidentLawsAction(President $president) {
         return $this->json($president->getLaws());
     }
 
+    /**
+     * @SWG\Tag(name="President")
+     * @SWG\Response(
+     *     response=200,
+     *     description="Retrieve a president law using his uuid",
+     *     @Model(type=President::class)
+     * )
+     */
     public function getPresidentLawAction(President $president,Law $law) {
         return $this->json($law);
     }
 
+    /**
+     * @SWG\Tag(name="President")
+     * @SWG\Response(
+     *     response=200,
+     *     description="Retrieve all presidents",
+     *     @Model(type=President::class)
+     * )
+     */
     public function getPresidentsAction()
     {
         return $this->json($this->em->getRepository(President::class)->findAll());
@@ -60,6 +103,12 @@ class PresidentController extends FOSRestController
      * @ParamConverter("president", converter="fos_rest.request_body")
      * @param President $president
      * @return Response
+     * @SWG\Tag(name="President")
+     * @SWG\Response(
+     *     response=200,
+     *     description="Create a new president",
+     *     @Model(type=President::class)
+     * )
      */
     public function postPresidentAction(President $president)
     {
@@ -85,6 +134,12 @@ class PresidentController extends FOSRestController
      * @ParamConverter("law", converter="fos_rest.request_body")
      * @param Law $law
      * @return Response
+     * @SWG\Tag(name="President")
+     * @SWG\Response(
+     *     response=200,
+     *     description="Create a new law for this president",
+     *     @Model(type=President::class)
+     * )
      */
     public function postPresidentsLawAction(President $president, Law $law) {
 

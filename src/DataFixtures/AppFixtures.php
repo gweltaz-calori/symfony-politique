@@ -28,8 +28,9 @@ class AppFixtures extends Fixture
         $manager->persist($person);
 
         $vote = new \App\Entity\LawVote();
-        $vote->setLaw($law);
         $vote->setPerson($person);
+
+        $law->setVotes([$vote]);
 
         $manager->persist($vote);
 

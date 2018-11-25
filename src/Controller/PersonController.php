@@ -14,9 +14,11 @@ use App\Entity\Person;
 use App\Entity\President;
 use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\FOSRestController;
+use Nelmio\ApiDocBundle\Annotation\Model;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Swagger\Annotations as SWG;
 
 class PersonController extends FOSRestController
 {
@@ -29,6 +31,14 @@ class PersonController extends FOSRestController
         $this->validator = $validator;
     }
 
+    /**
+     * @SWG\Tag(name="Person")
+     * @SWG\Response(
+     *     response=200,
+     *     description="Retrieve a person using his uuid",
+     *     @Model(type=Person::class)
+     * )
+     */
     public function getPersonAction(Person $person)
     {
         if($person === null) {
@@ -41,6 +51,12 @@ class PersonController extends FOSRestController
      * @ParamConverter("person", converter="fos_rest.request_body")
      * @param Person $person
      * @return Response
+     * @SWG\Tag(name="Person")
+     * @SWG\Response(
+     *     response=200,
+     *     description="Create a new person",
+     *     @Model(type=Person::class)
+     * )
      */
     public function postPersonAction(Person $person) {
         if($person === null) {
@@ -60,6 +76,14 @@ class PersonController extends FOSRestController
         return new Response("Created",Response::HTTP_CREATED);
     }
 
+    /**
+     * @SWG\Tag(name="Person")
+     * @SWG\Response(
+     *     response=200,
+     *     description="Retrieve all persons",
+     *     @Model(type=Person::class)
+     * )
+     */
     public function getPersonsAction()
     {
         return $this->json($this->em->getRepository(Person::class)->findAll());
