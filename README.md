@@ -9,6 +9,22 @@
 
 # Comment utiliser le projet
 
+## Installations
+
+### Composer
+```bash
+# si composer installé en global
+composer install
+# possiblité de lancer le projet sans composer
+php bin/composer.phar install
+```
+
+### VueJS
+Nécessite [NodeJS](https://nodejs.org/en/).
+```bash
+npm i
+```
+
 ## Modification du .env
 
 Modifier le .env avec les identifiants de base de données nécéssaires
