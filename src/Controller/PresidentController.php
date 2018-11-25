@@ -11,6 +11,7 @@ namespace App\Controller;
 
 use App\Entity\Law;
 use App\Entity\President;
+use App\Services\OpenStreetMapClient;
 use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\FOSRestController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -21,11 +22,13 @@ class PresidentController extends FOSRestController
 {
     private $em;
     private $validator;
+    private $osmClient;
 
-    public function __construct(EntityManagerInterface $entityManager,ValidatorInterface $validator)
+    public function __construct(EntityManagerInterface $entityManager,ValidatorInterface $validator,OpenStreetMapClient $openStreetMapClient)
     {
         $this->em = $entityManager;
         $this->validator = $validator;
+        $this->osmClient = $openStreetMapClient;
     }
 
     public function getPresidentAction(President $president)
@@ -34,6 +37,10 @@ class PresidentController extends FOSRestController
             return new Response("Not Found",Response::HTTP_NOT_FOUND);
         }
         return $this->json($president);
+    }
+
+    public function getPresidentCoordinatesAction(President $president) {
+        return $this->json($this->osmClient->getCooordinates($president->getCountry()));
     }
 
     public function getPresidentLawsAction(President $president) {
