@@ -9,7 +9,29 @@
 namespace App\Repository;
 
 
-class LawRepository
+use App\Entity\Law;
+use App\Entity\LawVote;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Mapping;
+use Symfony\Bridge\Doctrine\RegistryInterface;
+
+class LawRepository extends ServiceEntityRepository
 {
 
+    public function __construct(RegistryInterface $registry)
+    {
+        parent::__construct($registry, Law::class);
+    }
+
+    public function findAllSortByVotes() {
+        $query = $this->createQueryBuilder("p")
+            ->join("p.votes","v")
+            ->groupBy("p.uuid")
+            ->orderBy('count(p.uuid)', 'ASC')
+            ->getQuery();
+
+        return $query->execute();
+    }
 }

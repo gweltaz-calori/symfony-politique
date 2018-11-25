@@ -16,6 +16,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\FOSRestController;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Swagger\Annotations as SWG;
@@ -55,8 +56,14 @@ class LawController extends FOSRestController
      *     @Model(type=Law::class)
      * )
      */
-    public function getLawsAction()
+    public function getLawsAction(Request $request)
     {
+        $sortParam = $request->get("sort");
+
+        if($sortParam === "best") {
+            return $this->json($this->em->getRepository(Law::class)->findAllSortByVotes());
+        }
+
         return $this->json($this->em->getRepository(Law::class)->findAll());
     }
 
