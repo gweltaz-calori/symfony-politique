@@ -36,6 +36,14 @@ class Law implements \JsonSerializable
      */
     private $createdBy;
 
+
+    /**
+     * @ORM\ManyToMany(targetEntity="LawVote",cascade={"persist", "remove"})
+     * @ORM\JoinTable(name="law_votes",
+     *      joinColumns={@ORM\JoinColumn(name="law_uuid", referencedColumnName="uuid")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="vote_uuid", referencedColumnName="uuid")}
+     * )
+     */
     private $votes;
 
     /**
@@ -86,6 +94,21 @@ class Law implements \JsonSerializable
         $this->createdBy = $createdBy;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getVotes()
+    {
+        return $this->votes;
+    }
+
+    /**
+     * @param mixed $votes
+     */
+    public function setVotes($votes): void
+    {
+        $this->votes = $votes;
+    }
 
     /**
      * Specify data which should be serialized to JSON
@@ -99,6 +122,7 @@ class Law implements \JsonSerializable
        return [
          "uuid" => $this->uuid,
          "description" => $this->description,
+         "votes" => $this->votes
        ];
     }
 }

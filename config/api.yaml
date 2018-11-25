@@ -2,6 +2,14 @@ presidents:
   type:     rest
   resource: App\Controller\PresidentController
 
+laws:
+  type:     rest
+  resource: App\Controller\LawController
+
+person:
+  type:     rest
+  resource: App\Controller\PersonController
+
 app.swagger_ui:
   path: /api/doc
   methods: GET

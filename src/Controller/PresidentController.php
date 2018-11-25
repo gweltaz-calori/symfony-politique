@@ -40,6 +40,10 @@ class PresidentController extends FOSRestController
         return $this->json($president->getLaws());
     }
 
+    public function getPresidentLawAction(President $president,Law $law) {
+        return $this->json($law);
+    }
+
     public function getPresidentsAction()
     {
         return $this->json($this->em->getRepository(President::class)->findAll());
