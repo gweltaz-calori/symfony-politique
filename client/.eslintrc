@@ -1,0 +1,36 @@
+{
+	"root": true,
+	"extends": ["eslint:recommended", "prettier", "plugin:vue/recommended"],
+	"plugins": ["vue", "prettier"],
+	"rules": {
+		"prettier/prettier": [
+			"error",
+			{
+				"singleQuote": true,
+				"bracketSpacing": true,
+				"printWidth": 80
+			}
+		],
+		"no-console": 0,
+		"block-scoped-var": 2,
+		"array-callback-return": 2,
+		"curly": 2,
+		"default-case": 1,
+		"dot-location": ["error", "property"],
+		"eqeqeq": ["error", "always"],
+		"no-else-return": "error",
+		"no-empty-function": "error",
+		"no-eq-null": "error",
+		"no-extend-native": "error",
+		"no-extra-bind": "error"
+	},
+	"parserOptions": {
+		"parser": "babel-eslint",
+		"ecmaVersion": 2017,
+		"module": true
+	},
+	"env": {
+    "browser": true,
+    "node": true
+	}
+}
