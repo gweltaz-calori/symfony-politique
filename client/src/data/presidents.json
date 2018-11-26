@@ -1,0 +1,29 @@
+[
+  {
+    "uuid": "0-0",
+    "name": "Pierre",
+    "country": "0-0-0",
+    "politicalParty": "0-0-0-0",
+    "laws": [
+      "0-0-0-0-0"
+    ]
+  },
+  {
+    "uuid": "1-1",
+    "name": "Michel",
+    "country": "1-1-1",
+    "politicalParty": "1-1-1-1",
+    "laws": [
+      "1-1-1-1-1"
+    ]
+  },
+  {
+    "uuid": "2-2",
+    "name": "Henri",
+    "country": "2-2-2",
+    "politicalParty": "1-1-1-1",
+    "laws": [
+      "2-2-2-2-2"
+    ]
+  }
+]
