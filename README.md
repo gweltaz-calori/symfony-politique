@@ -7,6 +7,14 @@
 - Une documentation disponible à `/api/doc`
 - Un client Web
 
+# Concept
+
+Une entité "President", une entité "Party" (le partie politique du President), une entity "Law" (les lois qu'il fait passer), les loi possède à nombre de vote comme ca on pourra afficher les lois les plus votés.
+
+Un President peux faire voter plusieurs lois, chaque loi s'applique dans le pays du President, on peut voter pour chacune des lois, visualiser les meilleurs lois, ainsi que les meilleurs loi par pays. Un président peut proposer une nouvelle loi. Un président possède un seul parti politique et un parti politique peut être posséder par plusieurs président de différent pays.
+
+Un service externe qui appelle l'api OpenStreetMap permettant de récupérer les coordonnées gps du pays et ainsi d'afficher nos chers président sur une carte sur une carte (coté client).
+
 # Comment utiliser le projet
 
 ## Installations
