@@ -3,12 +3,14 @@ import Vuex from 'vuex';
 
 import dataPresidents from '@/data/presidents.json';
 import dataParties from '@/data/parties.json';
+import dataLaws from '@/data/laws.json';
 
 Vue.use(Vuex);
 
 const state = {
   presidents: {},
-  parties: {}
+  parties: {},
+  laws: {}
 };
 
 const actions = {
@@ -21,6 +23,11 @@ const actions = {
     // const presidents = await fetch('')
     const parties = dataParties;
     commit('setParties', parties);
+  },
+  async loadLaws({ commit }) {
+    // const presidents = await fetch('')
+    const laws = dataLaws;
+    commit('setLaws', laws);
   }
 };
 
@@ -30,6 +37,9 @@ const mutations = {
   },
   setParties(state, parties) {
     state.parties = parties;
+  },
+  setLaws(state, laws) {
+    state.laws = laws;
   }
 };
 

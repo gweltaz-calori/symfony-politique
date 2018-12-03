@@ -8,6 +8,7 @@ Vue.config.productionTip = false;
 const loadDatas = async () => {
   await store.dispatch('loadPresidents');
   await store.dispatch('loadParties');
+  await store.dispatch('loadLaws');
 
   new Vue({
     router,
