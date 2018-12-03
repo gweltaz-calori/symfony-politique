@@ -3,6 +3,7 @@
     <ul class="list">
       <li class="list__item">
         <RouterLink
+          exact
           to="/"
           class="list__item__link"
         >
@@ -11,6 +12,7 @@
       </li>
       <li class="list__item">
         <RouterLink
+          exact
           to="/presidents"
           class="list__item__link"
         >
@@ -19,6 +21,7 @@
       </li>
       <li class="list__item">
         <RouterLink
+          exact
           to="/parties"
           class="list__item__link"
         >
@@ -27,6 +30,7 @@
       </li>
       <li class="list__item">
         <RouterLink
+          exact
           to="/laws"
           class="list__item__link"
         >
@@ -35,6 +39,7 @@
       </li>
       <li class="list__item">
         <RouterLink
+          exact
           to="/map"
           class="list__item__link"
         >
