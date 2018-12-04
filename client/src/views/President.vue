@@ -1,16 +1,21 @@
 <template>
   <div>
-    <h1>{{ president.name }}</h1>
-    <p>Pays : {{ president.country }}</p>
+    <PageTitle :label="president.name" />
+    <p class="field">
+      Pays : {{ president.country }}
+    </p>
     <p>
-      Partie : <RouterLink :to="`/parties/${party.uuid}`">
+      <!-- Partie : <RouterLink :to="`/parties/${party.uuid}`">
         {{ party.name }}
-      </RouterLink>
+      </RouterLink> -->
     </p>
   </div>
 </template>
 <script>
+import PageTitle from '@/components/PageTitle';
+
 export default {
+  components: { PageTitle },
   computed: {
     president() {
       return this.$store.state.presidents.find(
@@ -25,3 +30,8 @@ export default {
   }
 };
 </script>
+<style scoped>
+.field {
+  font-size: 16px;
+}
+</style>
