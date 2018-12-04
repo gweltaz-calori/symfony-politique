@@ -1,9 +1,10 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-import dataPresidents from '@/data/presidents.json';
 import dataParties from '@/data/parties.json';
 import dataLaws from '@/data/laws.json';
+
+import api from '@/api';
 
 Vue.use(Vuex);
 
@@ -15,8 +16,7 @@ const state = {
 
 const actions = {
   async loadPresidents({ commit }) {
-    // const presidents = await fetch('')
-    const presidents = dataPresidents;
+    const presidents = await api.fetchPresidents();
     commit('setPresidents', presidents);
   },
   async loadParties({ commit }) {
@@ -25,7 +25,7 @@ const actions = {
     commit('setParties', parties);
   },
   async loadLaws({ commit }) {
-    // const presidents = await fetch('')
+    // const laws = await api.fetchPresidents();
     const laws = dataLaws;
     commit('setLaws', laws);
   }
