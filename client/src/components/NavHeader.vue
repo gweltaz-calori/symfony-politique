@@ -75,6 +75,6 @@
 }
 .list__item__link:hover,
 .list__item__link--active {
-  border-bottom: 2px solid var(--dark-purple);
+  border-bottom: 2px solid var(--light-purple);
 }
 </style>
