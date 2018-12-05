@@ -1,14 +1,20 @@
 <template>
   <div id="app">
     <NavHeader />
-    <RouterView class="page" />
+    <RouterView class="router" />
   </div>
 </template>
 <script>
 import NavHeader from '@/components/NavHeader.vue';
 
 export default {
-  components: { NavHeader }
+  components: { NavHeader },
+  mounted() {
+    const colors = this.$store.state.colors;
+    Object.keys(colors).forEach(key => {
+      document.documentElement.style.setProperty(`--${key}`, colors[key]);
+    });
+  }
 };
 </script>
 
@@ -16,12 +22,8 @@ export default {
 @import url('./assets/css/reset.css');
 
 html {
-  --black: #333;
-  --dark-purple: #5603ad;
-  --light-purple: #8367c7;
-  --green: #b3e9c7;
-  --white: #f0fff1;
-
+  --max-width: 960px;
+  --ctt-width: 600px;
   --header-height: 50px;
 }
 
@@ -30,9 +32,13 @@ body {
   background: #fff;
 }
 
+.router {
+  margin: var(--header-height) auto;
+}
+
 .page {
-  max-width: 1280px;
+  max-width: var(--max-width);
   width: 90%;
-  margin: calc(2 * var(--header-height)) auto;
+  padding: var(--header-height) 0;
 }
 </style>
