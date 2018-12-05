@@ -137,7 +137,8 @@ class President implements \JsonSerializable {
             "uuid" => $this->uuid,
             "name" => $this->name,
             "country" => $this->country,
-            "laws" => $this->laws
+            "laws" => $this->laws,
+            "party" => $this->politicalParty
         ];
     }
 }

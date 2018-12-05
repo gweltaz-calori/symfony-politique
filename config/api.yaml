@@ -6,6 +6,10 @@ laws:
   type:     rest
   resource: App\Controller\LawController
 
+party:
+  type:     rest
+  resource: App\Controller\PoliticalPartyController
+
 person:
   type:     rest
   resource: App\Controller\PersonController
