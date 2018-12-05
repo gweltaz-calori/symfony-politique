@@ -17,6 +17,7 @@ export default {
 <style scoped>
 .page-title {
   margin: 20px 0 35px 0;
-  font-size: 30px;
+  font-size: 20px;
+  /* font-weight: bold; */
 }
 </style>
