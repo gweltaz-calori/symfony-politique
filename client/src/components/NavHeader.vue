@@ -56,7 +56,8 @@
   position: fixed;
   top: 0;
   left: 0;
-  border-bottom: 1px solid var(--black);
+  border-bottom: 1px solid var(--dark-grey);
+  background: var(--white);
 }
 
 .list {
@@ -75,6 +76,6 @@
 }
 .list__item__link:hover,
 .list__item__link--active {
-  border-bottom: 2px solid var(--light-purple);
+  border-bottom: 2px solid var(--color);
 }
 </style>
