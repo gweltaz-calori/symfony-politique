@@ -2,13 +2,19 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 
 import dataParties from '@/data/parties.json';
-import dataLaws from '@/data/laws.json';
 
 import api from '@/api';
 
 Vue.use(Vuex);
 
 const state = {
+  colors: {
+    black: '#333',
+    color: 'rgb(50, 145, 160)',
+    'dark-grey': '#666',
+    'light-grey': '#bbb',
+    white: '#fff'
+  },
   presidents: {},
   parties: {},
   laws: {}
@@ -25,8 +31,7 @@ const actions = {
     commit('setParties', parties);
   },
   async loadLaws({ commit }) {
-    // const laws = await api.fetchPresidents();
-    const laws = dataLaws;
+    const laws = await api.fetchLaws();
     commit('setLaws', laws);
   }
 };
