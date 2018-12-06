@@ -21,19 +21,85 @@
         />
       </li>
     </ul>
+    <div
+      v-if="persons"
+      class="List"
+    >
+      <p class="List__title">
+        Ajouter un vote
+      </p>
+      <select v-model="selectedVoterUuid">
+        <option
+          disabled
+          value=""
+        >
+          Sélectionner un voteur
+        </option>
+        <option
+          v-for="person in persons"
+          :key="person.key"
+          :value="person.uuid"
+          class="List__item"
+        >
+          {{ person.name }}
+        </option>
+      </select>
+      <button @click="sendVoter">
+        Voter !
+      </button>
+    </div>
   </div>
 </template>
 <script>
+import api from '@/api';
 import PageTitle from '@/components/PageTitle';
 import CardItem from '@/components/CardItem';
 
 export default {
   components: { PageTitle, CardItem },
+  data() {
+    return {
+      lawUuid: this.$route.params.lawUuid,
+      selectedVoterUuid: ''
+    };
+  },
   computed: {
     law() {
-      return this.$store.state.laws.find(
-        p => p.uuid === this.$route.params.lawUuid
-      );
+      return this.$store.state.laws.find(p => p.uuid === this.lawUuid);
+    },
+    persons() {
+      const persons = this.$store.state.persons;
+      if (!persons.length) {
+        return null;
+      }
+      const votersUuid = this.law.votes
+        .map(vote => vote.person)
+        .map(person => person.uuid);
+      return persons.filter(p => votersUuid.indexOf(p.uuid) < 0);
+    }
+  },
+  mounted() {
+    this.$store.dispatch('loadPersons');
+  },
+  methods: {
+    sendVoter() {
+      const voter = this.persons.find(p => p.uuid === this.selectedVoterUuid);
+      if (!voter) {
+        return null;
+      }
+      console.log({
+        body: {},
+        params: {
+          lawUuid: this.lawUuid
+        }
+      });
+      console.log(api);
+      /* api.postLawsVotes({
+        body: {},
+        params: {
+          lawUuid: this.lawUuid
+        }
+      }); */
     }
   }
 };

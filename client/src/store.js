@@ -15,7 +15,8 @@ const state = {
   },
   presidents: {},
   parties: {},
-  laws: {}
+  laws: {},
+  persons: {}
 };
 
 const actions = {
@@ -30,6 +31,10 @@ const actions = {
   async loadLaws({ commit }) {
     const laws = await api.fetchLaws();
     commit('setLaws', laws);
+  },
+  async loadPersons({ commit }) {
+    const persons = await api.fetchPersons();
+    commit('setPersons', persons);
   }
 };
 
@@ -42,6 +47,9 @@ const mutations = {
   },
   setLaws(state, laws) {
     state.laws = laws;
+  },
+  setPersons(state, persons) {
+    state.persons = persons;
   }
 };
 
