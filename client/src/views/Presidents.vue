@@ -1,0 +1,22 @@
+<template>
+  <div class="Page">
+    <PageTitle label="Liste des présidents" />
+    <CardList
+      :list="presidents"
+      base-url="presidents"
+    />
+  </div>
+</template>
+<script>
+import PageTitle from '@/components/PageTitle';
+import CardList from '@/components/CardList';
+
+export default {
+  components: { PageTitle, CardList },
+  data() {
+    return {
+      presidents: this.$store.state.presidents
+    };
+  }
+};
+</script>
