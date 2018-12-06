@@ -5,26 +5,29 @@ const config = {
 export const endpoints = {
   fetchPresidents: { method: get, path: '/presidents' },
   postPresidents: { method: post, path: '/presidents' },
-  fetchPresident: { method: get, path: '/presidents/:presidentId' },
+  fetchPresident: { method: get, path: '/presidents/:presidentUuid' },
   fetchPresidentCoordinates: {
     method: get,
-    path: '/presidents/:presidentId/coordinates'
+    path: '/presidents/:presidentUuid/coordinates'
   },
-  fetchPresidentLaws: { method: get, path: '/presidents/:presidentId/laws' },
-  postPresidentLaws: { method: post, path: '/presidents/:presidentId/laws' },
+  fetchPresidentLaws: { method: get, path: '/presidents/:presidentUuid/laws' },
+  postPresidentLaws: { method: post, path: '/presidents/:presidentUuid/laws' },
   getPresidentLaws: {
     method: get,
-    path: '/presidents/:presidentId/laws/:lawId'
+    path: '/presidents/:presidentUuid/laws/:lawUuid'
   },
 
+  fetchParties: { method: get, path: '/parties' },
+  fetchParty: { method: get, path: '/parties/:partyUuid' },
+
   fetchLaws: { method: get, path: '/laws' },
-  fetchLaw: { method: get, path: '/laws/:law' },
-  fetchLawsVotes: { method: get, path: '/laws/:law/votes' },
-  postLawsVotes: { method: post, path: '/laws/:law/votes' },
+  fetchLaw: { method: get, path: '/laws/:lawUuid' },
+  fetchLawsVotes: { method: get, path: '/laws/:lawUuid/votes' },
+  postLawsVotes: { method: post, path: '/laws/:lawUuid/votes' },
 
   fetchPersons: { method: get, path: '/persons' },
   postPersons: { method: post, path: '/persons' },
-  fetchPerson: { method: get, path: '/persons/:personId' }
+  fetchPerson: { method: get, path: '/persons/:personUuid' }
 };
 
 function computeURI(path, params) {
