@@ -41,4 +41,10 @@ body {
   width: 90%;
   padding: var(--header-height) 0;
 }
+
+.link {
+  color: var(--black);
+  border-bottom: 2px solid var(--dark-grey);
+  text-decoration: none;
+}
 </style>

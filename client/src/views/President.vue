@@ -39,11 +39,16 @@
           <div class="list__item__icon">
             <SvgIcon
               icon="politics"
-              :color="$store.state.colors['dark-grey']"
+              :color="$store.state.colors.black"
             />
           </div>
           <p class="list__item__label">
-            partie
+            <RouterLink
+              :to="president.party.name"
+              class="link"
+            >
+              {{ president.party.name }}
+            </RouterLink>
           </p>
         </li>
       </ul>
@@ -58,9 +63,8 @@
         >
           <RouterLink
             :to="`/laws/${law.uuid}`"
-            class="list__item__link"
+            class="link"
           >
-            <!-- Loi {{ law.uuid.substring(4, 8) }} -->
             Loi {{ law.description }}
           </RouterLink>
         </li>
@@ -120,6 +124,7 @@ export default {
 }
 .header__part__subtitle {
   font-size: 16px;
+  color: var(--dark-grey);
 }
 .header__part__number {
   font-size: 30px;
@@ -160,10 +165,5 @@ export default {
 }
 .list__item__label {
   margin-left: 5px;
-}
-.list__item__link {
-  color: var(--black);
-  border-bottom: 2px solid var(--dark-grey);
-  text-decoration: none;
 }
 </style>
