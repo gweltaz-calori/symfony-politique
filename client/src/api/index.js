@@ -41,22 +41,35 @@ function computeURI(path, params) {
   return realPath;
 }
 
-async function get(path, data) {
+async function get(path, data, cb) {
   const uri = data ? computeURI(path, data.params) : path;
-  return await fetch(`${config.baseURL}${uri}`).then(res => res.json());
+  return await fetch(`${config.baseURL}${uri}`).then(res => {
+    if (cb) {
+      cb();
+    }
+    return res.json();
+  });
 }
 
-async function post(path, data) {
+async function post(path, data, cb) {
   const uri = data ? computeURI(path, data.params) : path;
   return await fetch(`${config.baseURL}${uri}`, {
+    headers: {
+      'Content-Type': 'application/json'
+    },
     method: 'POST',
-    body: data
-  }).then(res => res.json());
+    body: JSON.stringify(data.body)
+  }).then(res => {
+    if (cb) {
+      cb();
+    }
+    return res;
+  });
 }
 
 const api = {};
 Object.keys(endpoints).forEach(key => {
-  api[key] = data => endpoints[key].method(endpoints[key].path, data);
+  api[key] = (data, cb) => endpoints[key].method(endpoints[key].path, data, cb);
 });
 
 export default api;
