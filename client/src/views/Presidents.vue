@@ -1,7 +1,10 @@
 <template>
   <div class="page">
     <PageTitle label="Liste des présidents" />
-    <CardList :list="presidents" />
+    <CardList
+      :list="presidents"
+      base-url="presidents"
+    />
   </div>
 </template>
 <script>

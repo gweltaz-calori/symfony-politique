@@ -6,7 +6,7 @@
       class="list__item"
     >
       <RouterLink
-        :to="`/presidents/${item.uuid}`"
+        :to="`/${baseUrl}/${item.uuid}`"
         class="list__item__link card"
       >
         <img
@@ -15,7 +15,7 @@
           class="card__image"
         >
         <p class="card__name">
-          {{ item.name }}
+          {{ item.name || item.description }}
         </p>
       </RouterLink>
     </li>
@@ -26,6 +26,10 @@ export default {
   props: {
     list: {
       type: Array,
+      required: true
+    },
+    baseUrl: {
+      type: String,
       required: true
     }
   }
