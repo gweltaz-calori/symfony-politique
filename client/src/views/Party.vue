@@ -1,20 +1,23 @@
 <template>
   <div>
-    <h1>{{ party.name }}</h1>
-    <ul>
-      <li
-        v-for="president in presidents"
-        :key="president.key"
-      >
-        <RouterLink :to="`/presidents/${president.uuid}`">
-          {{ president.name }}
-        </RouterLink>
-      </li>
-    </ul>
+    <SheetHeader
+      :image="party.image"
+      :title="party.name"
+      :subtitle="presidentsCount > 1 ? 'Présidents' : 'Président'"
+      :counter="presidentsCount"
+    />
+    <CardList
+      :list="presidents"
+      base-url="presidents"
+    />
   </div>
 </template>
 <script>
+import SheetHeader from '@/components/SheetHeader';
+import CardList from '@/components/CardList';
+
 export default {
+  components: { SheetHeader, CardList },
   computed: {
     party() {
       return this.$store.state.parties.find(
@@ -23,8 +26,11 @@ export default {
     },
     presidents() {
       return this.$store.state.presidents.filter(
-        p => p.politicalParty === this.party.uuid
+        p => p.party.uuid === this.party.uuid
       );
+    },
+    presidentsCount() {
+      return this.presidents.length;
     }
   }
 };
