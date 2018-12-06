@@ -1,20 +1,18 @@
 <template>
-  <div>
-    <h1>Liste des parties</h1>
-    <ul>
-      <li
-        v-for="party in parties"
-        :key="party.key"
-      >
-        <RouterLink :to="`/parties/${party.uuid}`">
-          {{ party.name }}
-        </RouterLink>
-      </li>
-    </ul>
+  <div class="page">
+    <PageTitle label="Liste des parties" />
+    <CardList
+      :list="parties"
+      base-url="parties"
+    />
   </div>
 </template>
 <script>
+import PageTitle from '@/components/PageTitle';
+import CardList from '@/components/CardList';
+
 export default {
+  components: { PageTitle, CardList },
   data() {
     return {
       parties: this.$store.state.parties

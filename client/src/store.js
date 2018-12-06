@@ -1,8 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-import dataParties from '@/data/parties.json';
-
 import api from '@/api';
 
 Vue.use(Vuex);
@@ -26,8 +24,7 @@ const actions = {
     commit('setPresidents', presidents);
   },
   async loadParties({ commit }) {
-    // const presidents = await fetch('')
-    const parties = dataParties;
+    const parties = await api.fetchParties();
     commit('setParties', parties);
   },
   async loadLaws({ commit }) {
