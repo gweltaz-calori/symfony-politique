@@ -17,6 +17,7 @@ class AppFixtures extends Fixture
 
         $party = new PoliticalParty();
         $party->setName("En marche");
+        $party->setImage("https://storage.googleapis.com/en-marche-fr/E-MAILING/2017/images/REM/Logo-LREM-noir.jpg");
         $president->setPoliticalParty($party);
 
         $manager->persist($president);
@@ -37,7 +38,46 @@ class AppFixtures extends Fixture
         $vote = new \App\Entity\LawVote();
         $vote->setPerson($person);
 
-        $law->setVotes([$vote]);
+        $law->addVote($vote);
+
+        $manager->persist($vote);
+
+        $person = new \App\Entity\Person();
+        $person->setName("Johny");
+        $person->setImage("http://media.ufc.tv/fighter_images/Johny_Hendricks/HENDRICKS_JOHNY.png");
+
+        $manager->persist($person);
+
+        $vote = new \App\Entity\LawVote();
+        $vote->setPerson($person);
+
+        $law->addVote($vote);
+
+        $manager->persist($vote);
+
+        $person = new \App\Entity\Person();
+        $person->setName("Tomy");
+        $person->setImage("https://p4.storage.canalblog.com/48/66/950505/111796411_o.jpg");
+
+        $manager->persist($person);
+
+        $vote = new \App\Entity\LawVote();
+        $vote->setPerson($person);
+
+        $law->addVote($vote);
+
+        $manager->persist($vote);
+
+        $person = new \App\Entity\Person();
+        $person->setName("Paul");
+        $person->setImage("https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/PaulWalkerEdit-1.jpg/220px-PaulWalkerEdit-1.jpg");
+
+        $manager->persist($person);
+
+        $vote = new \App\Entity\LawVote();
+        $vote->setPerson($person);
+
+        $law->addVote($vote);
 
         $manager->persist($vote);
 
@@ -48,6 +88,7 @@ class AppFixtures extends Fixture
 
         $party = new PoliticalParty();
         $party->setName("Republicans");
+        $party->setImage("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Republicanlogo.svg/2000px-Republicanlogo.svg.png");
         $president->setPoliticalParty($party);
 
         $manager->persist($president);
@@ -68,9 +109,24 @@ class AppFixtures extends Fixture
         $vote = new \App\Entity\LawVote();
         $vote->setPerson($person);
 
-        $law->setVotes([$vote]);
+        $law->addVote($vote);
 
         $manager->persist($vote);
+
+        $person = new \App\Entity\Person();
+        $person->setName("Sanders");
+        $person->setImage("https://upload.wikimedia.org/wikipedia/en/thumb/5/52/MichaelKelsoFinale.jpg/225px-MichaelKelsoFinale.jpg");
+
+        $manager->persist($person);
+
+        $vote = new \App\Entity\LawVote();
+        $vote->setPerson($person);
+
+        $law->addVote($vote);
+
+        $manager->persist($vote);
+
+
 
         $president = new \App\Entity\President();
         $president->setName("Angela Merkel");
@@ -80,6 +136,7 @@ class AppFixtures extends Fixture
 
         $party = new PoliticalParty();
         $party->setName("Union chrétienne-démocrate d'Allemagne");
+        $party->setImage("http://fracademic.com/pictures/frwiki/67/CDU_logo.svg");
         $president->setPoliticalParty($party);
 
         $manager->persist($president);
@@ -100,7 +157,33 @@ class AppFixtures extends Fixture
         $vote = new \App\Entity\LawVote();
         $vote->setPerson($person);
 
-        $law->setVotes([$vote]);
+        $law->addVote($vote);
+
+        $manager->persist($vote);
+
+        $person = new \App\Entity\Person();
+        $person->setName("Michael");
+        $person->setImage("https://hiphopcorner.fr/wp-content/uploads/2018/05/130828123801-michael-jordan-iso-1998-all-star-game.video-player.jpg");
+
+        $manager->persist($person);
+
+        $vote = new \App\Entity\LawVote();
+        $vote->setPerson($person);
+
+        $law->addVote($vote);
+
+        $manager->persist($vote);
+
+        $person = new \App\Entity\Person();
+        $person->setName("Pierre");
+        $person->setImage("http://medias.lequipe.fr/img-photo-jpg/pierre-jackson-a-battu-son-record-en-carri-re/1500000000759021/33:41,1651:856-624-416-75/dfe7b.jpg");
+
+        $manager->persist($person);
+
+        $vote = new \App\Entity\LawVote();
+        $vote->setPerson($person);
+
+        $law->addVote($vote);
 
         $manager->persist($vote);
 

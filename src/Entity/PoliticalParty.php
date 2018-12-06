@@ -26,6 +26,11 @@ class PoliticalParty implements \JsonSerializable
     private $uuid;
 
     /**
+     * @ORM\Column(type="string", length=255,nullable=true)
+     */
+    private $image;
+
+    /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotNull()
      */
@@ -63,6 +68,22 @@ class PoliticalParty implements \JsonSerializable
         $this->name = $name;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param mixed $image
+     */
+    public function setImage($image): void
+    {
+        $this->image = $image;
+    }
+
 
     /**
      * Specify data which should be serialized to JSON
@@ -74,7 +95,9 @@ class PoliticalParty implements \JsonSerializable
     public function jsonSerialize()
     {
         return [
-            "name" => $this->name
+            "name" => $this->name,
+            "uuid" => $this->uuid,
+            "image" => $this->image
         ];
     }
 }
