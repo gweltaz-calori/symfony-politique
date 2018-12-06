@@ -110,6 +110,10 @@ class Law implements \JsonSerializable
         $this->votes = $votes;
     }
 
+    public function addVote($vote) {
+        $this->votes[] = $vote;
+    }
+
     /**
      * Specify data which should be serialized to JSON
      * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
