@@ -12,7 +12,7 @@
           class="list__item__link card"
         >
           <img
-            src="https://pbs.twimg.com/media/CylQeDzXcAEiI7f.jpg"
+            :src="president.image"
             class="card__image"
           >
           <p class="card__name">
