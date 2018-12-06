@@ -30,6 +30,11 @@ class Person implements \JsonSerializable
     private $name;
 
     /**
+     * @ORM\Column(type="string", length=255,nullable=true)
+     */
+    private $image;
+
+    /**
      * @return mixed
      */
     public function getUuid()
@@ -61,6 +66,21 @@ class Person implements \JsonSerializable
         $this->name = $name;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param mixed $image
+     */
+    public function setImage($image): void
+    {
+        $this->image = $image;
+    }
 
     /**
      * Specify data which should be serialized to JSON
@@ -73,7 +93,8 @@ class Person implements \JsonSerializable
     {
         return [
             "uuid" => $this->uuid,
-            "name" => $this->name
+            "name" => $this->name,
+            "image" => $this->image
         ];
     }
 }

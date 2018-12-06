@@ -25,6 +25,11 @@ class President implements \JsonSerializable {
     private $name;
 
     /**
+     * @ORM\Column(type="string", length=255,nullable=true)
+     */
+    private $image;
+
+    /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotNull()
      */
@@ -125,6 +130,24 @@ class President implements \JsonSerializable {
     }
 
     /**
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param mixed $image
+     */
+    public function setImage($image): void
+    {
+        $this->image = $image;
+    }
+
+
+
+    /**
      * Specify data which should be serialized to JSON
      * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
      * @return mixed data which can be serialized by <b>json_encode</b>,
@@ -137,7 +160,9 @@ class President implements \JsonSerializable {
             "uuid" => $this->uuid,
             "name" => $this->name,
             "country" => $this->country,
-            "laws" => $this->laws
+            "laws" => $this->laws,
+            "party" => $this->politicalParty,
+            "image" => $this->image
         ];
     }
 }
