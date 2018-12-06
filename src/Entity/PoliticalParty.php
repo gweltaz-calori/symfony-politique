@@ -74,7 +74,8 @@ class PoliticalParty implements \JsonSerializable
     public function jsonSerialize()
     {
         return [
-            "name" => $this->name
+            "name" => $this->name,
+            "uuid" => $this->uuid
         ];
     }
 }
