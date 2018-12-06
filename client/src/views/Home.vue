@@ -5,6 +5,13 @@
 </template>
 <script>
 export default {
-  name: "home"
+  name: 'Home'
 };
 </script>
+<style scoped>
+.home {
+  max-width: var(--max-width);
+  width: 90%;
+  margin: var(--header-height) auto;
+}
+</style>
