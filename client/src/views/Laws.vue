@@ -1,21 +1,18 @@
 <template>
-  <div>
+  <div class="page">
     <PageTitle label="Liste des lois" />
-    <ul>
-      <li
-        v-for="law in laws"
-        :key="law.key"
-      >
-        Loi {{ law.uuid.substring(4, 8) }}
-      </li>
-    </ul>
+    <CardList
+      :list="laws"
+      base-url="laws"
+    />
   </div>
 </template>
 <script>
 import PageTitle from '@/components/PageTitle';
+import CardList from '@/components/CardList';
 
 export default {
-  components: { PageTitle },
+  components: { PageTitle, CardList },
   data() {
     return {
       laws: this.$store.state.laws
