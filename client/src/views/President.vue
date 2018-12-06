@@ -3,7 +3,7 @@
     <header class="header">
       <div class="header__part header__part--left">
         <img
-          src="https://pbs.twimg.com/media/CylQeDzXcAEiI7f.jpg"
+          :src="president.image"
           class="header__image"
         >
         <h1 class="header__name">
@@ -138,6 +138,7 @@ export default {
 .header__image {
   width: 75px;
   height: 75px;
+  object-fit: cover;
   border-radius: 50%;
 }
 
