@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="law"
-    class="page"
+    class="Page"
   >
     <PageTitle :label="law.description" />
     <ul>

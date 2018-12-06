@@ -33,18 +33,38 @@ body {
 }
 
 .router {
+  max-width: var(--max-width);
+  width: 90%;
   margin: var(--header-height) auto;
 }
 
-.page {
-  max-width: var(--max-width);
-  width: 90%;
+.Page {
   padding: var(--header-height) 0;
 }
 
-.link {
+.Link {
   color: var(--black);
   border-bottom: 2px solid var(--dark-grey);
   text-decoration: none;
+}
+
+.List {
+  margin: 50px 0;
+}
+.List__title {
+  font-size: 16px;
+  font-weight: bold;
+}
+.List__item {
+  margin: 22px 0;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+}
+.List__item__icon {
+  width: 25px;
+}
+.List__item__label {
+  margin-left: 5px;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="page">
+  <div class="Page">
     <PageTitle label="Liste des parties" />
     <CardList
       :list="parties"
