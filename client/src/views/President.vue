@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="president">
     <header class="header">
       <div class="header__part header__part--left">
         <img
@@ -44,7 +44,7 @@
           </div>
           <p class="list__item__label">
             <RouterLink
-              :to="president.party.name"
+              :to="`/parties/${president.party.uuid}`"
               class="link"
             >
               {{ president.party.name }}
