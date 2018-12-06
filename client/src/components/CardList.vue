@@ -9,20 +9,20 @@
         :to="`/${baseUrl}/${item.uuid}`"
         class="list__item__link card"
       >
-        <img
-          v-if="item.image"
-          :src="item.image"
-          class="card__image"
-        >
-        <p class="card__name">
-          {{ item.name || item.description }}
-        </p>
+        <CardItem
+          :image="item.image"
+          :label="item.name || item.description"
+          in-link
+        />
       </RouterLink>
     </li>
   </ul>
 </template>
 <script>
+import CardItem from '@/components/CardItem';
+
 export default {
+  components: { CardItem },
   props: {
     list: {
       type: Array,
@@ -52,26 +52,5 @@ export default {
   font-size: 18px;
   color: var(--black);
   text-decoration: none;
-}
-
-.card {
-  display: flex;
-  align-items: center;
-  padding: 18px 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
-  transition: box-shadow 0.3s;
-}
-.card:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-.card__image {
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-  border-radius: 50%;
-}
-.card__name {
-  margin-left: 12px;
 }
 </style>
