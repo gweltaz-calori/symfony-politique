@@ -49,7 +49,11 @@ export default {
   color: var(--black);
 }
 .list__item {
-  width: 50%;
+  width: 48%;
+  display: inline-block;
   margin-bottom: 16px;
+}
+.list__item:nth-child(2n) {
+  margin-right: 2%;
 }
 </style>
