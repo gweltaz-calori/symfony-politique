@@ -17,9 +17,8 @@ class AppFixtures extends Fixture
 
         $party = new PoliticalParty();
         $party->setName("En marche");
+        $party->setImage("https://storage.googleapis.com/en-marche-fr/E-MAILING/2017/images/REM/Logo-LREM-noir.jpg");
         $president->setPoliticalParty($party);
-        $president->setImage("https://storage.googleapis.com/en-marche-fr/E-MAILING/2017/images/REM/Logo-LREM-noir.jpg");
-
 
         $manager->persist($president);
 
@@ -89,8 +88,8 @@ class AppFixtures extends Fixture
 
         $party = new PoliticalParty();
         $party->setName("Republicans");
+        $party->setImage("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Republicanlogo.svg/2000px-Republicanlogo.svg.png");
         $president->setPoliticalParty($party);
-        $president->setImage("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Republicanlogo.svg/2000px-Republicanlogo.svg.png");
 
         $manager->persist($president);
 
@@ -137,8 +136,8 @@ class AppFixtures extends Fixture
 
         $party = new PoliticalParty();
         $party->setName("Union chrétienne-démocrate d'Allemagne");
+        $party->setImage("http://fracademic.com/pictures/frwiki/67/CDU_logo.svg");
         $president->setPoliticalParty($party);
-        $president->setImage("http://fracademic.com/pictures/frwiki/67/CDU_logo.svg");
 
         $manager->persist($president);
 
