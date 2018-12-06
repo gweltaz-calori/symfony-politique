@@ -28,25 +28,35 @@
       <p class="List__title">
         Ajouter un vote
       </p>
-      <select v-model="selectedVoterUuid">
-        <option
-          disabled
-          value=""
+      <div class="vote">
+        <div class="vote__select">
+          <select
+            v-model="selectedVoterUuid"
+            class="vote__select__tag"
+          >
+            <option
+              disabled
+              value=""
+            >
+              Sélectionner un voteur
+            </option>
+            <option
+              v-for="person in persons"
+              :key="person.key"
+              :value="person.uuid"
+              class="List__item"
+            >
+              {{ person.name }}
+            </option>
+          </select>
+        </div>
+        <button
+          class="vote__button"
+          @click="sendVoter"
         >
-          Sélectionner un voteur
-        </option>
-        <option
-          v-for="person in persons"
-          :key="person.key"
-          :value="person.uuid"
-          class="List__item"
-        >
-          {{ person.name }}
-        </option>
-      </select>
-      <button @click="sendVoter">
-        Voter !
-      </button>
+          Voter !
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -122,5 +132,46 @@ export default {
 }
 .list__item:nth-child(2n) {
   margin-right: 2%;
+}
+
+.vote {
+  margin-top: 20px;
+}
+.vote__select {
+  display: inline-block;
+  position: relative;
+}
+.vote__select::before {
+  content: '';
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-25%);
+  border-style: solid;
+  border-width: 8px 4px 0 4px;
+  border-color: var(--dark-grey) transparent transparent transparent;
+}
+.vote__select__tag,
+.vote__button {
+  padding: 5px 8px;
+  font-size: 14px;
+  font-family: monospace;
+  appearance: none;
+  border: none;
+  border-radius: 4px;
+  background: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+.vote__select__tag {
+  padding-right: 30px;
+}
+.vote__button {
+  width: 125px;
+  margin-left: 25px;
+  cursor: pointer;
+  color: var(--white);
+  background: var(--color);
 }
 </style>
