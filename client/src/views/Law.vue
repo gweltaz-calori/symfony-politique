@@ -87,19 +87,20 @@ export default {
       if (!voter) {
         return null;
       }
-      console.log({
-        body: {},
-        params: {
-          lawUuid: this.lawUuid
+      api.postLawsVotes(
+        {
+          body: {
+            person: voter
+          },
+          params: {
+            lawUuid: this.lawUuid
+          }
+        },
+        () => {
+          // TODO: fetch only law and inject result in state.laws
+          this.$store.dispatch('loadLaws');
         }
-      });
-      console.log(api);
-      /* api.postLawsVotes({
-        body: {},
-        params: {
-          lawUuid: this.lawUuid
-        }
-      }); */
+      );
     }
   }
 };
