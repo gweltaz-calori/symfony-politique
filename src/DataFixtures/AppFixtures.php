@@ -83,7 +83,7 @@ class AppFixtures extends Fixture
 
         $president = new \App\Entity\President();
         $president->setName("Trump");
-        $president->setCountry("UnitedStates");
+        $president->setCountry("United States");
         $president->setImage("https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Donald_Trump_official_portrait.jpg/220px-Donald_Trump_official_portrait.jpg");
 
         $party = new PoliticalParty();

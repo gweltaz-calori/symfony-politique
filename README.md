@@ -15,6 +15,13 @@ Un President peux faire voter plusieurs lois, chaque loi s'applique dans le pays
 
 Un service externe qui appelle l'api OpenStreetMap permettant de récupérer les coordonnées gps du pays et ainsi d'afficher nos chers président sur une carte sur une carte (coté client).
 
+# Ou accéder
+
+Il est possible d'accéder à la doc de l'api à cette adresse [http://politic.gweltaz-calori.com](http://politic.gweltaz-calori.com)
+
+
+Il est possible d'accéder au client à cette adresse [http://www.symfony.gweltaz-calori.com](http://www.symfony.gweltaz-calori.com)
+
 # Comment utiliser le projet
 
 ## Installations
@@ -54,6 +61,8 @@ php bin/console doctrine:migrations:migrate
 ```
 
 ## Exécution des fixtures
+
+Afin de préremplir la base de données
 
 ```bash
 php bin/console doctrine:fixtures:load
