@@ -7,7 +7,6 @@ import Parties from './views/Parties.vue';
 import Party from './views/Party.vue';
 import Laws from './views/Laws.vue';
 import Law from './views/Law.vue';
-import Map from './views/Map.vue';
 
 Vue.use(Router);
 
@@ -50,11 +49,6 @@ export default new Router({
       path: '/laws/:lawUuid',
       name: 'law',
       component: Law
-    },
-    {
-      path: '/map',
-      name: 'map',
-      component: Map
     }
   ]
 });
