@@ -1,26 +1,22 @@
 # Travail effectué
 
-- 14 endpoints serveur
+- 16 endpoints serveur
 - Des fixtures
 - Un service symfony injecté (`Services/OpenStreetMapClient`)
-- Une logique métier (Scoring des lois les plus votées)
+- Une logique métier (scoring des lois les plus votées)
 - Une documentation disponible à `/api/doc`
 - Un client Web
 
 # Concept
 
-Une entité "President", une entité "Party" (le partie politique du President), une entity "Law" (les lois qu'il fait passer), les loi possède à nombre de vote comme ca on pourra afficher les lois les plus votés.
+Une entité _President_ possède une entité _Party_ (le parti politique du président). Chaque président a une liste de lois (entité _Law_) qui correspond aux lois qu'il fait passer. Les lois possèdent un nombre de vote. Un président possède un seul parti politique et un parti politique peut avoir plusieurs présidents de différent pays.
 
-Un President peux faire voter plusieurs lois, chaque loi s'applique dans le pays du President, on peut voter pour chacune des lois, visualiser les meilleurs lois, ainsi que les meilleurs loi par pays. Un président peut proposer une nouvelle loi. Un président possède un seul parti politique et un parti politique peut être posséder par plusieurs président de différent pays.
+Un service externe qui appelle l'API OpenStreetMap permet de récupérer les coordonnées GPS du pays et ainsi d'afficher ces chères présidents sur une carte.
 
-Un service externe qui appelle l'api OpenStreetMap permettant de récupérer les coordonnées gps du pays et ainsi d'afficher nos chers président sur une carte sur une carte (coté client).
+# Les liens utils
 
-# Ou accéder
-
-Il est possible d'accéder à la doc de l'api à cette adresse [http://politic.gweltaz-calori.com](http://politic.gweltaz-calori.com)
-
-
-Il est possible d'accéder au client à cette adresse [http://www.symfony.gweltaz-calori.com](http://www.symfony.gweltaz-calori.com)
+* [Documentation de l'API](http://politic.gweltaz-calori.com)
+* [Client Web](http://www.symfony.gweltaz-calori.com)
 
 # Comment utiliser le projet
 
@@ -41,7 +37,7 @@ cd client
 npm i
 ```
 
-## Modification du .env
+### Modification du .env
 
 Modifier le .env avec les identifiants de base de données nécéssaires
 
@@ -49,23 +45,33 @@ Modifier le .env avec les identifiants de base de données nécéssaires
 DATABASE_URL=mysql://root:@127.0.0.1:3306/symfo_politique
 ```
 
-## Création de la base de données
+### Création de la base de données
 
 Créer la base de données vide `symfo_politique`
 
-## Appliquer les migrations
+### Appliquer les migrations
 
 ```
 php bin/console make:migration
 php bin/console doctrine:migrations:migrate
 ```
 
-## Exécution des fixtures
+### Exécution des fixtures
 
 Afin de préremplir la base de données
 
 ```bash
 php bin/console doctrine:fixtures:load
+```
+
+## Développement
+
+```bash
+# terminal 1
+php bin/console run:serve
+# terminal 2
+cd client
+npm run serve
 ```
 
 
