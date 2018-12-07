@@ -37,15 +37,6 @@
           Lois
         </RouterLink>
       </li>
-      <li class="list__item">
-        <RouterLink
-          exact
-          to="/map"
-          class="list__item__link"
-        >
-          Carte
-        </RouterLink>
-      </li>
     </ul>
   </nav>
 </template>
